@@ -1,0 +1,76 @@
+{
+  "burgers": [
+    {
+      "id": 1,
+      "title": "Bun Drop Burger",
+      "toppings": [
+        "Lettuce",
+        "Tomato",
+        "Onion",
+        "Pickles",
+        "Ketchup",
+        "Mustard",
+        "Mayo"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Cheese Burger",
+      "toppings": [
+        "Lettuce",
+        "Tomato",
+        "Onion",
+        "Pickles",
+        "Ketchup",
+        "Mustard",
+        "Mayo",
+        "Cheddar Cheese"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Veggie Burger",
+      "toppings": [
+        "Lettuce",
+        "Tomato",
+        "Onion",
+        "Pickles",
+        "Ketchup",
+        "Mustard",
+        "Mayo"
+      ]
+    }
+  ],
+  "fries": [
+    {
+      "id": 1,
+      "title": "Regular Fries"
+    },
+    {
+      "id": 2,
+      "title": "Sweet Potato Fries"
+    },
+    {
+      "id": 3,
+      "title": "Chili Fries"
+    }
+  ],
+  "drinks": [
+    {
+      "id": 1,
+      "title": "Coke"
+    },
+    {
+      "id": 2,
+      "title": "Diet Coke"
+    },
+    {
+      "id": 3,
+      "title": "Lemonade"
+    },
+    {
+      "id": 4,
+      "title": "Mineral water"
+    }
+  ]
+}
