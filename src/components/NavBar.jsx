@@ -29,7 +29,6 @@ function NavBar() {
       }}
     >
       <div>
-        {" "}
         <Link to={"/"}>
           <img src={logo} alt='logo' className='logo-navbar' />
         </Link>

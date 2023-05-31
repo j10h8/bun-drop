@@ -9,13 +9,13 @@ function Home() {
         <img src={logo} alt='logo' className='logo' />
       </div>
       <Link to={"/menu"} className='link'>
-        <h1>Menu</h1>
+        <h1 className='emphasize'>Menu</h1>
       </Link>
       <Link to={"/about"} className='link'>
-        <h1>About</h1>
+        <h1 className='emphasize'>About</h1>
       </Link>
       <Link to={"/terms"} className='link'>
-        <h1>Terms & Conditions</h1>
+        <h1 className='emphasize'>Terms & Conditions</h1>
       </Link>
     </div>
   );

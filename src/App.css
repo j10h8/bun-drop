@@ -49,7 +49,10 @@ h1 {
   text-shadow: rgba(255, 255, 255, 0.75) 0px 0px 3px;
 }
 
-h1:hover {
+.emphasize {
+}
+
+.emphasize:hover {
   -webkit-text-stroke: #ff9064;
   -webkit-text-stroke-width: 2px;
 }
