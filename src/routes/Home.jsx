@@ -1,9 +1,13 @@
 import React from "react";
+import logo from "../images/logo color.png";
 
 function Home() {
   return (
-    <div>
-      <h1>Home</h1>
+    <div className='center-items'>
+      <img src={logo} alt='logo' className='logo' />
+      <h1>Menu</h1>
+      <h1>About</h1>
+      <h1>Terms & Conditions</h1>
     </div>
   );
 }
