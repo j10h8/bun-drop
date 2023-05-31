@@ -1,13 +1,22 @@
 import React from "react";
 import logo from "../images/logo color.png";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
     <div className='center-items'>
-      <img src={logo} alt='logo' className='logo' />
-      <h1>Menu</h1>
-      <h1>About</h1>
-      <h1>Terms & Conditions</h1>
+      <div className='logo-background'>
+        <img src={logo} alt='logo' className='logo' />
+      </div>
+      <Link to={"/menu"} className='link'>
+        <h1>Menu</h1>
+      </Link>
+      <Link to={"/about"} className='link'>
+        <h1>About</h1>
+      </Link>
+      <Link to={"/terms"} className='link'>
+        <h1>Terms & Conditions</h1>
+      </Link>
     </div>
   );
 }

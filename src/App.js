@@ -1,5 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
 import Home from "./routes/Home";
 import About from "./routes/About";
 import Terms from "./routes/Terms";
@@ -14,19 +15,22 @@ import NotFound from "./routes/NotFound";
 
 function App() {
   return (
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/about' element={<About />} />
-      <Route path='/terms' element={<Terms />} />
-      <Route path='/menu' element={<Menu />} />
-      <Route path='/menu/:itemTitle' element={<Details />} />
-      <Route path='/cart' element={<Cart />} />
-      <Route path='/shipping' element={<Shipping />} />
-      <Route path='/payment' element={<Payment />} />
-      <Route path='/card' element={<Card />} />
-      <Route path='/swish' element={<Swish />} />
-      <Route path='*' element={<NotFound />} />
-    </Routes>
+    <div>
+      <NavBar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/terms' element={<Terms />} />
+        <Route path='/menu' element={<Menu />} />
+        <Route path='/menu/:itemTitle' element={<Details />} />
+        <Route path='/cart' element={<Cart />} />
+        <Route path='/shipping' element={<Shipping />} />
+        <Route path='/payment' element={<Payment />} />
+        <Route path='/card' element={<Card />} />
+        <Route path='/swish' element={<Swish />} />
+        <Route path='*' element={<NotFound />} />
+      </Routes>
+    </div>
   );
 }
 
