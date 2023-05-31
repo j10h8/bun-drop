@@ -12,13 +12,17 @@
 body {
   font-family: "Roboto", sans-serif;
   color: #ffa07a;
-  background-color: #6c93ff;
+  background: linear-gradient(90deg, rgb(0, 255, 255) 0%, #4b7bff 100%);
+}
+
+.gradient-background {
+  background: linear-gradient(90deg, rgb(0, 255, 255) 0%, #4b7bff 100%);
 }
 
 .logo {
   width: 250px;
   border-radius: 50%;
-  box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.75);
+  box-shadow: 10px 10px 10px 0px rgba(0, 255, 255, 1);
 }
 
 .logo-background {
@@ -28,7 +32,11 @@ body {
   justify-content: center;
   margin-top: 7rem;
   margin-bottom: 3rem;
-  background-color: #4b7bff;
+  background: linear-gradient(
+    315deg,
+    rgb(0, 255, 255) 0%,
+    rgb(106, 144, 250) 100%
+  );
   border-radius: 50%;
   width: 230px;
   height: 230px;
@@ -43,29 +51,45 @@ body {
 h1 {
   margin: 1rem;
   font-size: 2.5rem;
-  color: #4b7bff;
-  -webkit-text-stroke: #ffa07a;
-  -webkit-text-stroke-width: 2px;
-  text-shadow: rgba(255, 255, 255, 0.75) 0px 0px 3px;
+  color: #ffa07a;
+  -webkit-text-stroke: #274ea3;
+  -webkit-text-stroke-width: 1px;
+}
+
+.blue-heading {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-size: 2.5rem;
+  color: #315fde;
+  text-shadow: rgba(0, 255, 255, 1) 3px 3px 0px;
+  -webkit-text-stroke-width: 0px;
 }
 
 .emphasize {
 }
 
 .emphasize:hover {
-  -webkit-text-stroke: #ff9064;
-  -webkit-text-stroke-width: 2px;
+  text-shadow: rgba(0, 255, 255, 1) 3px 3px 0px;
 }
 
 .nav-bar-icon {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #ffa07a;
 }
 
 .nav-bar-icon:hover {
-  color: #ff9064;
+  color: rgb(0, 255, 255);
 }
 
 .link {
   text-decoration: none;
+}
+
+p {
+  margin: 1rem;
+  font-size: 1.1rem;
+  text-align: justify;
+  font-family: "Merriweather", serif;
+  font-weight: 400;
+  color: #274ea3;
 }

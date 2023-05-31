@@ -22,6 +22,7 @@ function NavBar() {
   );
   return (
     <div
+      className='gradient-background'
       style={{
         display: "flex",
         alignItems: "center",
