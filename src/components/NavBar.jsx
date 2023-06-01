@@ -6,11 +6,15 @@ import {
   faCartShopping,
   faInfoCircle,
   faFileContract,
+  faUtensils,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 function NavBar() {
   const homeIcon = <FontAwesomeIcon icon={faHouse} className='nav-bar-icon' />;
+  const menuIcon = (
+    <FontAwesomeIcon icon={faUtensils} className='nav-bar-icon' />
+  );
   const shoppingCartIcon = (
     <FontAwesomeIcon icon={faCartShopping} className='nav-bar-icon' />
   );
@@ -43,6 +47,7 @@ function NavBar() {
         }}
       >
         <Link to={"/"}>{homeIcon}</Link>
+        <Link to={"/menu"}>{menuIcon}</Link>
         <Link to={"/about"}>{infoIcon}</Link>
         <Link to={"/terms"}>{termsIcon}</Link>
         <Link to={"/cart"}>{shoppingCartIcon}</Link>

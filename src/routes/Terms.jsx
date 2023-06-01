@@ -6,7 +6,7 @@ function Terms() {
       <div
         className='center-items'
         style={{
-          width: "30vw",
+          width: "700px",
           background: "rgba(255, 255, 255, 0.8)",
           borderRadius: "20px",
           boxShadow: "10px 10px 0px 0px rgba(0,255,255,1)",
