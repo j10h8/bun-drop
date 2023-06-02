@@ -3,6 +3,7 @@
     {
       "id": 1,
       "title": "Bun Drop Burger",
+      "price": 5.99,
       "toppings": [
         "Lettuce",
         "Tomato",
@@ -17,6 +18,7 @@
     {
       "id": 2,
       "title": "Cheese Burger",
+      "price": 6.99,
       "toppings": [
         "Lettuce",
         "Tomato",
@@ -25,13 +27,14 @@
         "Ketchup",
         "Mustard",
         "Mayo",
-        "Cheddar Cheese"
+        "Cheese"
       ],
       "image": "\\images\\cheese-burger.png"
     },
     {
       "id": 3,
       "title": "Veggie Burger",
+      "price": 7.99,
       "toppings": [
         "Lettuce",
         "Tomato",

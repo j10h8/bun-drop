@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Burger from "../components/Burger";
 
 function Menu() {
   const [burgers, setBurgers] = useState([]);
@@ -30,16 +31,9 @@ function Menu() {
   }, []);
 
   return (
-    <div>
+    <div className='center-items'>
       {burgers.map((burger) => (
-        <div key={burger.id}>
-          <h1>{burger.title}</h1>
-          <img
-            src={burger.image}
-            style={{ width: "320px", borderRadius: "30px" }}
-            alt={"image"}
-          />
-        </div>
+        <Burger key={burger.id} burger={burger} />
       ))}
       {fries.map((item) => (
         <div key={item.id}>
