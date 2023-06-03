@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function Burger(props) {
+  const [menuItem, setMenuItem] = useState([]);
+
+  function setItem() {
+    setMenuItem(props.burger);
+  }
+  useEffect(() => {
+    addToCart();
+  }, [menuItem]);
+
+  function addToCart() {
+    let cart = localStorage.getItem("cart");
+    if (!cart) {
+      cart = [];
+    } else {
+      cart = JSON.parse(cart);
+    }
+    cart.push(menuItem);
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
   return (
     <div className='menu-item-card'>
       <h1>{props.burger.title}</h1>
@@ -21,7 +41,9 @@ function Burger(props) {
         </div>
       </div>
       <div>
-        <button className='add-to-cart-btn'>Add to cart</button>
+        <button className='add-to-cart-btn' onClick={setItem}>
+          Add to cart
+        </button>
       </div>
     </div>
   );
