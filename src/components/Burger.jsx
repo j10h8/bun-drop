@@ -7,7 +7,7 @@ function Burger(props) {
       <h1>${props.burger.price}</h1>
       <div style={{ display: "flex", marginTop: "1rem" }}>
         <img src={props.burger.image} className='menu-image' alt={"image"} />
-        <div style={{ alignItems: "top" }} className='center-items'>
+        <div className='center-items'>
           <h2>Toppings</h2>
           {props.burger.toppings ? (
             <div>
@@ -20,7 +20,9 @@ function Burger(props) {
           )}
         </div>
       </div>
-      <div></div>
+      <div>
+        <button className='add-to-cart-btn'>Add to cart</button>
+      </div>
     </div>
   );
 }

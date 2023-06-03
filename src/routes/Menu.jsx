@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Burger from "../components/Burger";
+import MenuItem from "../components/MenuItem";
 
 function Menu() {
   const [burgers, setBurgers] = useState([]);
@@ -31,21 +32,15 @@ function Menu() {
   }, []);
 
   return (
-    <div className='center-items'>
+    <div className='grid-layout'>
       {burgers.map((burger) => (
         <Burger key={burger.id} burger={burger} />
       ))}
-      {fries.map((item) => (
-        <div key={item.id}>
-          <h1>{item.title}</h1>
-          <img src={item.image} style={{ width: "320px" }} alt={"image"} />
-        </div>
+      {fries.map((fries) => (
+        <MenuItem key={fries.id} item={fries} />
       ))}
       {drinks.map((drink) => (
-        <div key={drink.id}>
-          <h1>{drink.title}</h1>
-          <img src={drink.image} style={{ width: "320px" }} alt={"image"} />
-        </div>
+        <MenuItem key={drink.id} item={drink} />
       ))}
     </div>
   );

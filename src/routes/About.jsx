@@ -9,7 +9,7 @@ function About() {
           width: "700px",
           background: "rgba(255, 255, 255, 0.8)",
           borderRadius: "20px",
-          boxShadow: "10px 10px 0px 0px rgba(0,255,255,1)",
+          boxShadow: "10px 10px 0px 5px rgba(0,255,255,1)",
         }}
       >
         <h1 className='blue-heading'>About</h1>
