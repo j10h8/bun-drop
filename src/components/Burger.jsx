@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function Burger(props) {
   const [menuItem, setMenuItem] = useState([]);
 
-  function setItem() {
-    setMenuItem(props.burger);
-  }
   useEffect(() => {
-    addToCart();
-  }, [menuItem]);
+    setMenuItem(props.burger);
+  }, [props.burger]);
 
   function addToCart() {
     let cart = localStorage.getItem("cart");
@@ -26,13 +23,17 @@ function Burger(props) {
       <h1>{props.burger.title}</h1>
       <h1>${props.burger.price}</h1>
       <div style={{ display: "flex", marginTop: "1rem" }}>
-        <img src={props.burger.image} className='menu-image' alt={"image"} />
+        <img
+          src={props.burger.image}
+          className='menu-image'
+          alt={"Menu item"}
+        />
         <div className='center-items'>
           <h2>Toppings</h2>
           {props.burger.toppings ? (
             <div>
-              {props.burger.toppings.map((topping) => (
-                <h3 key={props.topping}>{topping}</h3>
+              {props.burger.toppings.map((topping, index) => (
+                <h3 key={index}>{topping}</h3>
               ))}
             </div>
           ) : (
@@ -41,7 +42,7 @@ function Burger(props) {
         </div>
       </div>
       <div>
-        <button className='add-to-cart-btn' onClick={setItem}>
+        <button className='add-to-cart-btn' onClick={addToCart}>
           Add to cart
         </button>
       </div>

@@ -15,16 +15,39 @@ function Cart() {
 
   useEffect(() => {
     getCart();
-  }, []);
+  }, [cart]);
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
 
   return (
-    <div>
-      {cart.map((menuItem, index) => (
-        <div key={index}>
-          <h1>{menuItem.title}</h1>
-          <h1>{menuItem.price}</h1>
-        </div>
-      ))}
+    <div className='center-items'>
+      <div className='cart-items-container'>
+        {cart.map((cartItem, index) => (
+          <div key={index} className='cart-item-card'>
+            <div>
+              <h2>{cartItem.title}</h2>
+              <h2>${cartItem.price}</h2>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
+              <button
+                onClick={() => removeFromCart(index)}
+                className='remove-from-cart-btn'
+              >
+                Remove
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
