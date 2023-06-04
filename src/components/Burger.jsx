@@ -32,7 +32,7 @@ function Burger(props) {
           {props.burger.toppings ? (
             <div>
               {props.burger.toppings.map((topping) => (
-                <h3 key={props.id}>{topping}</h3>
+                <h3 key={props.topping}>{topping}</h3>
               ))}
             </div>
           ) : (
