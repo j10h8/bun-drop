@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 function Cart() {
   const [cart, setCart] = useState([]);
   const [updatedCart, setUpdatedCart] = useState([]);
+  const [total, setTotal] = useState(0);
 
   function getCart() {
     let cart = localStorage.getItem("cart");
@@ -14,9 +15,21 @@ function Cart() {
     setCart(cart);
   }
 
+  function getTotal() {
+    let total = 0;
+    cart.forEach((cartItem) => {
+      total += cartItem.price;
+    });
+    setTotal(total);
+  }
+
   useEffect(() => {
     getCart();
   }, [updatedCart]);
+
+  useEffect(() => {
+    getTotal();
+  }, [cart]);
 
   function removeFromCart(index) {
     cart.splice(index, 1);
@@ -49,6 +62,7 @@ function Cart() {
             </div>
           </div>
         ))}
+        <h2>Total: ${total}</h2>
       </div>
     </div>
   );

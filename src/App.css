@@ -204,8 +204,26 @@ p {
 
 .cart-item-card {
   display: flex;
-  border-bottom: #ffa07a solid 2px;
-  margin-bottom: 1rem;
+  border-bottom: rgb(255, 160, 122) solid 2px;
+  margin-bottom: 0;
   justify-content: space-between;
   width: 500px;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, rgb(0, 255, 255) 0%, #4b7bff 100%);
+  width: 30%;
+  height: 30%;
+  position: fixed;
+  top: 35%;
+  left: 35%;
+  box-shadow: 10px 10px 0px 5px rgba(0, 255, 255, 1);
+  border-color: rgba(255, 160, 122, 1);
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 30px;
 }
