@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 function Cart() {
   const [cart, setCart] = useState([]);
+  const [updatedCart, setUpdatedCart] = useState([]);
 
   function getCart() {
     let cart = localStorage.getItem("cart");
@@ -15,11 +16,12 @@ function Cart() {
 
   useEffect(() => {
     getCart();
-  }, [cart]);
+  }, [updatedCart]);
 
   function removeFromCart(index) {
     cart.splice(index, 1);
     localStorage.setItem("cart", JSON.stringify(cart));
+    setUpdatedCart(cart);
   }
 
   return (
