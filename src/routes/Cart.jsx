@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Cart() {
   const [cart, setCart] = useState([]);
@@ -18,9 +19,10 @@ function Cart() {
   function getTotal() {
     let total = 0;
     cart.forEach((cartItem) => {
-      total += cartItem.price;
+      total += cartItem.price * 100; // Multiply and later divide by 100 to avoid floating point errors
     });
-    setTotal(total);
+    total /= 100;
+    setTotal(total.toFixed(2));
   }
 
   useEffect(() => {
@@ -39,6 +41,11 @@ function Cart() {
 
   return (
     <div className='center-items'>
+      {cart.length === 0 ? (
+        <h1 className='cart-page-title'>Your cart is empty</h1>
+      ) : (
+        <h1 className='cart-page-title'>Your cart</h1>
+      )}
       <div className='cart-items-container'>
         {cart.map((cartItem, index) => (
           <div key={index} className='cart-item-card'>
@@ -62,8 +69,13 @@ function Cart() {
             </div>
           </div>
         ))}
-        <h2>Total: ${total}</h2>
+        {cart.length > 0 && <h2 style={{ marginTop: "0.5rem" }}>${total}</h2>}
       </div>
+      <Link to={"/checkout"}>
+        <button className='add-to-cart-btn' style={{ marginTop: "3rem" }}>
+          Checkout
+        </button>
+      </Link>
     </div>
   );
 }
