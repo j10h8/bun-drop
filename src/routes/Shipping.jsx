@@ -76,7 +76,7 @@ function Shipping() {
       street.trim().length > 12 ||
       houseNumber.trim().length > 12
     ) {
-      alert("Please provide input with a maximum of 12 characters!");
+      alert("Please provide inputs with a maximum of 12 characters!");
       return;
     }
 
@@ -147,7 +147,7 @@ function Shipping() {
         >
           <h2 style={{ marginBottom: "0.5rem" }}>Saved shipping details</h2>
           {shippingDetails.map((shippingDetail, index) => (
-            <div key={index}>
+            <div key={index} style={{ width: "100%" }}>
               <div>
                 <label className='input-label'>First name:</label>
                 <label>{shippingDetail.firstName}</label>
@@ -170,7 +170,7 @@ function Shipping() {
               </div>
             </div>
           ))}
-          <Link to={"/billing"}>
+          <Link to={"/payment"}>
             <button
               className='add-to-cart-btn'
               style={{ width: "auto", fontSize: "1.3rem" }}
@@ -195,11 +195,11 @@ function Shipping() {
           paddingBottom: "1rem",
         }}
       >
-        <h2 style={{ marginBottom: "1.5rem" }}>
+        <h2 style={{ marginBottom: "0.5rem" }}>
           Specify/update shipping details
         </h2>
-        <form onSubmit={handleSubmit}>
-          <div>
+        <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+          <div style={{ width: "100%" }}>
             <label className='input-label'>First name:</label>
             <input
               type='text'
@@ -268,7 +268,7 @@ function Shipping() {
         >
           Go back
         </button>
-        <Link to={"/billing"}>
+        <Link to={"/payment"}>
           <button
             className='add-to-cart-btn'
             style={{ width: "100%", fontSize: "1.3rem" }}

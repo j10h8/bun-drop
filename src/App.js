@@ -7,7 +7,7 @@ import Terms from "./routes/Terms";
 import Menu from "./routes/Menu";
 import Cart from "./routes/Cart";
 import Shipping from "./routes/Shipping";
-import Billing from "./routes/Billing";
+import Summary from "./routes/Summary";
 import Card from "./routes/Card";
 import Swish from "./routes/Swish";
 import NotFound from "./routes/NotFound";
@@ -26,7 +26,7 @@ function App() {
         <Route path='/menu' element={<Menu />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/shipping' element={<Shipping />} />
-        <Route path='/billing' element={<Billing />} />
+        <Route path='/summary' element={<Summary />} />
         <Route path='/card' element={<Card />} />
         <Route path='/swish' element={<Swish />} />
         <Route path='*' element={<NotFound />} />

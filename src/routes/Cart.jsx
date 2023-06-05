@@ -78,6 +78,13 @@ function Cart() {
           </button>
         </Link>
       )}
+      {cart.length > 0 && (
+        <Link to={"/menu"}>
+          <button className='add-to-cart-btn' style={{ marginTop: "3rem" }}>
+            Menu
+          </button>
+        </Link>
+      )}
     </div>
   );
 }

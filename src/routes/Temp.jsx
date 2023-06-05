@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function Billing() {
+function Summary() {
   const [shippingDetails, setShippingDetails] = useState([]);
 
   useEffect(() => {
@@ -32,4 +32,4 @@ function Billing() {
   );
 }
 
-export default Billing;
+export default Payment;

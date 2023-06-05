@@ -248,7 +248,7 @@ p {
 .input-label {
   text-align: end;
   display: inline-block;
-  width: 110px;
+  width: 50%;
   margin: 0.5rem;
   align-items: left;
 }
