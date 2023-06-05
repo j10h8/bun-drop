@@ -15,6 +15,11 @@ function Shipping() {
     getShippingDetails();
   }, []);
 
+  function clearShippingDetails() {
+    localStorage.removeItem("shippingDetails");
+    setShippingDetails([]);
+  }
+
   function getShippingDetails() {
     let shippingDetails = localStorage.getItem("shippingDetails");
     if (!shippingDetails) {
@@ -24,7 +29,6 @@ function Shipping() {
     }
     setShippingDetails(shippingDetails);
     console.log(shippingDetails);
-    console.log(shippingDetails[0]);
   }
 
   function openModal() {
@@ -60,23 +64,52 @@ function Shipping() {
   function handleSubmit(event) {
     event.preventDefault();
 
+    if (
+      firstName.trim() === "" ||
+      lastName.trim() === "" ||
+      city.trim() === "" ||
+      street.trim() === "" ||
+      houseNumber.trim() === ""
+    ) {
+      alert("Please provide input in all fields!");
+      return;
+    }
+
+    const numberRegex = /\d/;
+
+    if (
+      numberRegex.test(firstName) ||
+      numberRegex.test(lastName) ||
+      numberRegex.test(city) ||
+      numberRegex.test(street)
+    ) {
+      alert("Numbers are only allowed in the house number field!");
+      return;
+    }
+
+    const hasSpecialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+
+    if (
+      hasSpecialCharacters.test(firstName) ||
+      hasSpecialCharacters.test(lastName) ||
+      hasSpecialCharacters.test(city) ||
+      hasSpecialCharacters.test(street)
+    ) {
+      alert("Special characters are not allowed!");
+      return;
+    }
+
     let shippingDetails = [];
 
     shippingDetails.push({
-      firstName: firstName,
-      lastName: lastName,
-      city: city,
-      street: street,
-      houseNumber: houseNumber,
+      firstName: firstName.trim(),
+      lastName: lastName.trim(),
+      city: city.trim(),
+      street: street.trim(),
+      houseNumber: houseNumber.trim(),
     });
 
     localStorage.setItem("shippingDetails", JSON.stringify(shippingDetails));
-
-    setFirstName("");
-    setLastName("");
-    setCity("");
-    setStreet("");
-    setHouseNumber("");
 
     openModal();
   }
@@ -84,61 +117,133 @@ function Shipping() {
   return (
     <div className='center-items'>
       <h1>Shipping details</h1>
-      {shippingDetails[0].firstName.length === 0 ? (
-        <h2>No prior shipping details have been specified</h2>
+      {shippingDetails.length === 0 ||
+      shippingDetails[0].firstName.length === 0 ? (
+        <h2 style={{ marginTop: "2rem", marginBottom: "1.5rem" }}></h2>
       ) : (
-        <div>
-          <h2>Currently saved shipping details</h2>
+        <div
+          className='center-items menu-item-card'
+          style={{
+            height: "auto",
+            paddingTop: "0.5rem",
+            paddingBottom: "1rem",
+          }}
+        >
+          <h2 style={{ marginBottom: "0.5rem" }}>Specified shipping details</h2>
           {shippingDetails.map((shippingDetail, index) => (
             <div key={index}>
-              <h2>First name: {shippingDetail.firstName}</h2>
-              <h2>Last name: {shippingDetail.lastName}</h2>
-              <h2>City: {shippingDetail.city}</h2>
-              <h2>Street: {shippingDetail.street}</h2>
-              <h2>House number: {shippingDetail.houseNumber}</h2>
+              <div>
+                <label className='input-label'>First name:</label>
+                <label>{shippingDetail.firstName}</label>
+              </div>
+              <div>
+                <label className='input-label'>Last name:</label>
+                <label>{shippingDetail.lastName}</label>
+              </div>
+              <div>
+                <label className='input-label'>City:</label>
+                <label>{shippingDetail.city}</label>
+              </div>
+              <div>
+                <label className='input-label'>Street:</label>
+                <label>{shippingDetail.street}</label>
+              </div>
+              <div>
+                <label className='input-label'>House number:</label>
+                <label>{shippingDetail.houseNumber}</label>
+              </div>
             </div>
           ))}
+          <Link to={"/billing"}>
+            <button
+              className='add-to-cart-btn'
+              style={{ width: "auto", fontSize: "1.3rem" }}
+            >
+              Go to payment
+            </button>
+          </Link>
+          <button
+            className='add-to-cart-btn'
+            style={{ width: "auto", fontSize: "1.3rem" }}
+            onClick={clearShippingDetails}
+          >
+            Clear details
+          </button>
         </div>
       )}
-      <h1>Specify/update shipping details</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            type='text'
-            value={firstName}
-            onChange={handleFirstNameInput}
-            placeholder='First name'
-          />
-          <input
-            type='text'
-            value={lastName}
-            onChange={handleLastNameInput}
-            placeholder='Last name'
-          />
-          <input
-            type='text'
-            value={city}
-            onChange={handleCityInput}
-            placeholder='City'
-          />
-          <input
-            type='text'
-            value={street}
-            onChange={handleStreetInput}
-            placeholder='Street'
-          />
-          <input
-            type='text'
-            value={houseNumber}
-            onChange={handleHouseNumberInput}
-            placeholder='House number'
-          />
-          <button type='submit'>Save</button>
-        </div>
-      </form>
+      <div
+        className='center-items menu-item-card'
+        style={{
+          height: "auto",
+          paddingTop: "0.5rem",
+          paddingBottom: "1rem",
+        }}
+      >
+        <h2 style={{ marginBottom: "1.5rem" }}>
+          Specify/update shipping details
+        </h2>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label className='input-label'>First name:</label>
+            <input
+              type='text'
+              value={firstName}
+              onChange={handleFirstNameInput}
+              placeholder='First name'
+            />
+          </div>
+          <div>
+            <label className='input-label'>Last name:</label>
+            <input
+              type='text'
+              value={lastName}
+              onChange={handleLastNameInput}
+              placeholder='Last name'
+            />
+          </div>
+          <div>
+            <label className='input-label'>City:</label>
+            <input
+              type='text'
+              value={city}
+              onChange={handleCityInput}
+              placeholder='City'
+            />
+          </div>
+          <div>
+            <label className='input-label'>Street:</label>
+            <input
+              type='text'
+              value={street}
+              onChange={handleStreetInput}
+              placeholder='Street'
+            />
+          </div>
+          <div>
+            <label className='input-label'>House number:</label>
+            <input
+              type='number'
+              value={houseNumber}
+              onChange={handleHouseNumberInput}
+              placeholder='House number'
+            />
+          </div>
+          <div className='center-items'>
+            <button
+              type='submit'
+              className='add-to-cart-btn'
+              style={{ width: "auto", fontSize: "1.3rem" }}
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
 
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className='modal'>
-        <h2>Your shipping details have been saved!</h2>
+        <h2 style={{ marginBottom: "1.5rem" }}>
+          Your shipping details have been saved!
+        </h2>
 
         <button
           onClick={closeModal}

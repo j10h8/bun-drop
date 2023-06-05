@@ -244,3 +244,33 @@ p {
   margin-top: 3rem;
   margin-bottom: 1.5rem;
 }
+
+.input-label {
+  text-align: end;
+  display: inline-block;
+  width: 110px;
+  margin: 0.5rem;
+  align-items: left;
+}
+
+input {
+  width: auto;
+  background-color: rgba(0, 255, 255, 0);
+  border-width: 0;
+  color: rgba(255, 160, 122, 1);
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  border-bottom: #ffa07a solid 2px;
+}
+
+input::placeholder {
+  color: rgba(255, 160, 122, 0.5);
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+}
+
+input::content {
+  color: rgba(255, 160, 122, 0.5);
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+}

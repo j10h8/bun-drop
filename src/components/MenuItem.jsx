@@ -55,7 +55,7 @@ function MenuItem(props) {
         <button
           onClick={closeModal}
           className='add-to-cart-btn'
-          style={{ width: "30%", fontSize: "1.3rem" }}
+          style={{ width: "auto", fontSize: "1.3rem" }}
         >
           Close
         </button>
@@ -63,7 +63,7 @@ function MenuItem(props) {
           <button
             onClick={closeModal}
             className='add-to-cart-btn'
-            style={{ width: "100%", fontSize: "1.3rem" }}
+            style={{ width: "auto", fontSize: "1.3rem" }}
           >
             Go to cart
           </button>
