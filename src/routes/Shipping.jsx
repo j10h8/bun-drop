@@ -18,6 +18,11 @@ function Shipping() {
   function clearShippingDetails() {
     localStorage.removeItem("shippingDetails");
     setShippingDetails([]);
+    setFirstName("");
+    setLastName("");
+    setCity("");
+    setStreet("");
+    setHouseNumber("");
   }
 
   function getShippingDetails() {
@@ -63,6 +68,17 @@ function Shipping() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    if (
+      firstName.trim().length > 12 ||
+      lastName.trim().length > 12 ||
+      city.trim().length > 12 ||
+      street.trim().length > 12 ||
+      houseNumber.trim().length > 12
+    ) {
+      alert("Please provide input with a maximum of 12 characters!");
+      return;
+    }
 
     if (
       firstName.trim() === "" ||
@@ -129,7 +145,7 @@ function Shipping() {
             paddingBottom: "1rem",
           }}
         >
-          <h2 style={{ marginBottom: "0.5rem" }}>Specified shipping details</h2>
+          <h2 style={{ marginBottom: "0.5rem" }}>Saved shipping details</h2>
           {shippingDetails.map((shippingDetail, index) => (
             <div key={index}>
               <div>
