@@ -7,10 +7,13 @@ import Terms from "./routes/Terms";
 import Menu from "./routes/Menu";
 import Cart from "./routes/Cart";
 import Shipping from "./routes/Shipping";
-import Checkout from "./routes/Checkout";
+import Billing from "./routes/Billing";
 import Card from "./routes/Card";
 import Swish from "./routes/Swish";
 import NotFound from "./routes/NotFound";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root");
 
 function App() {
   return (
@@ -23,7 +26,7 @@ function App() {
         <Route path='/menu' element={<Menu />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/shipping' element={<Shipping />} />
-        <Route path='/checkout' element={<Checkout />} />
+        <Route path='/billing' element={<Billing />} />
         <Route path='/card' element={<Card />} />
         <Route path='/swish' element={<Swish />} />
         <Route path='*' element={<NotFound />} />

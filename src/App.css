@@ -193,8 +193,19 @@ p {
 .grid-layout {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 0;
   justify-items: center;
+}
+
+@media (max-width: 2000px) {
+  .grid-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 1350px) {
+  .grid-layout {
+    grid-template-columns: 1fr;
+  }
 }
 
 .cart-items-container {

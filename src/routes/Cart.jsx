@@ -71,11 +71,13 @@ function Cart() {
         ))}
         {cart.length > 0 && <h2 style={{ marginTop: "0.5rem" }}>${total}</h2>}
       </div>
-      <Link to={"/checkout"}>
-        <button className='add-to-cart-btn' style={{ marginTop: "3rem" }}>
-          Checkout
-        </button>
-      </Link>
+      {cart.length > 0 && (
+        <Link to={"/shipping"}>
+          <button className='add-to-cart-btn' style={{ marginTop: "3rem" }}>
+            Checkout
+          </button>
+        </Link>
+      )}
     </div>
   );
 }
