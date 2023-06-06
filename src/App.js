@@ -12,6 +12,7 @@ import Card from "./routes/Card";
 import Swish from "./routes/Swish";
 import NotFound from "./routes/NotFound";
 import Modal from "react-modal";
+import Payment from "./routes/Payment";
 
 Modal.setAppElement("#root");
 
@@ -26,6 +27,7 @@ function App() {
         <Route path='/menu' element={<Menu />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/shipping' element={<Shipping />} />
+        <Route path='/payment' element={<Payment />} />
         <Route path='/summary' element={<Summary />} />
         <Route path='/card' element={<Card />} />
         <Route path='/swish' element={<Swish />} />

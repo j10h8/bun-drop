@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { Link } from "react-router-dom";
+import appService from "../services/appService";
 
 function Shipping() {
   const [shippingDetails, setShippingDetails] = useState([]);
@@ -33,7 +34,6 @@ function Shipping() {
       shippingDetails = JSON.parse(shippingDetails);
     }
     setShippingDetails(shippingDetails);
-    console.log(shippingDetails);
   }
 
   function openModal() {
@@ -69,47 +69,45 @@ function Shipping() {
   function handleSubmit(event) {
     event.preventDefault();
 
+    const service = new appService();
+
     if (
-      firstName.trim().length > 12 ||
-      lastName.trim().length > 12 ||
-      city.trim().length > 12 ||
-      street.trim().length > 12 ||
-      houseNumber.trim().length > 12
+      service.checkInputLength(firstName) ||
+      service.checkInputLength(lastName) ||
+      service.checkInputLength(city) ||
+      service.checkInputLength(street) ||
+      service.checkInputLength(houseNumber)
     ) {
       alert("Please provide inputs with a maximum of 12 characters!");
       return;
     }
 
     if (
-      firstName.trim() === "" ||
-      lastName.trim() === "" ||
-      city.trim() === "" ||
-      street.trim() === "" ||
-      houseNumber.trim() === ""
+      service.checkInputEmpty(firstName) ||
+      service.checkInputEmpty(lastName) ||
+      service.checkInputEmpty(city) ||
+      service.checkInputEmpty(street) ||
+      service.checkInputEmpty(houseNumber)
     ) {
       alert("Please provide input in all fields!");
       return;
     }
 
-    const numberRegex = /\d/;
-
     if (
-      numberRegex.test(firstName) ||
-      numberRegex.test(lastName) ||
-      numberRegex.test(city) ||
-      numberRegex.test(street)
+      service.checkIfNumber(firstName) ||
+      service.checkIfNumber(lastName) ||
+      service.checkIfNumber(city)
     ) {
       alert("Numbers are only allowed in the house number field!");
       return;
     }
 
-    const hasSpecialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-
     if (
-      hasSpecialCharacters.test(firstName) ||
-      hasSpecialCharacters.test(lastName) ||
-      hasSpecialCharacters.test(city) ||
-      hasSpecialCharacters.test(street)
+      service.checkIfSpecialCharacter(firstName) ||
+      service.checkIfSpecialCharacter(lastName) ||
+      service.checkIfSpecialCharacter(city) ||
+      service.checkIfSpecialCharacter(street) ||
+      service.checkIfSpecialCharacter(houseNumber)
     ) {
       alert("Special characters are not allowed!");
       return;
@@ -266,7 +264,7 @@ function Shipping() {
           className='add-to-cart-btn'
           style={{ width: "30%", fontSize: "1.3rem" }}
         >
-          Go back
+          Close window
         </button>
         <Link to={"/payment"}>
           <button

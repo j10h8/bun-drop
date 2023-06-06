@@ -206,11 +206,28 @@ p {
   .grid-layout {
     grid-template-columns: 1fr;
   }
+  .menu-image {
+    width: 300px;
+    height: 300px;
+  }
+  .menu-item-card {
+    width: 50vw;
+    min-width: 500px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .payment-container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .cart-items-container {
   display: flex;
   flex-direction: column;
+  width: 20%;
+  min-width: 200px;
 }
 
 .cart-item-card {
@@ -219,7 +236,7 @@ p {
   margin-top: 0.5rem;
   padding-bottom: 0.5rem;
   justify-content: space-between;
-  width: 500px;
+  width: 100%;
 }
 
 .modal {
@@ -273,4 +290,37 @@ input::content {
   color: rgba(255, 160, 122, 0.5);
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
+}
+
+.payment-container {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.payment-card {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 300px;
+  min-width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-color: rgba(0, 255, 255, 1);
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 30px;
+  margin: 1.5rem;
+  padding: 2rem;
+  box-shadow: 10px 10px 0px 5px rgba(0, 255, 255, 1);
+}
+
+.credit-card {
+  width: 90%;
+}
+
+.swish {
+  width: 50%;
 }

@@ -6,7 +6,8 @@ function About() {
       <div
         className='center-items'
         style={{
-          width: "700px",
+          width: "40%",
+          minWidth: "300px",
           background: "rgba(255, 255, 255, 0.8)",
           borderRadius: "20px",
           boxShadow: "10px 10px 0px 5px rgba(0,255,255,1)",

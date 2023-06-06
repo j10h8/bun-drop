@@ -5,6 +5,28 @@ function Summary() {
   const [shippingDetails, setShippingDetails] = useState([]);
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
+  const [cardDetails, setCardDetails] = useState([]);
+  const [swishDetails, setSwishDetails] = useState([]);
+
+  function getCardDetails() {
+    let cardDetails = localStorage.getItem("cardDetails");
+    if (!cardDetails) {
+      cardDetails = [];
+    } else {
+      cardDetails = JSON.parse(cardDetails);
+    }
+    setCardDetails(cardDetails);
+  }
+
+  function getSwishDetails() {
+    let swishDetails = localStorage.getItem("swishDetails");
+    if (!swishDetails) {
+      swishDetails = [];
+    } else {
+      swishDetails = JSON.parse(swishDetails);
+    }
+    setSwishDetails(swishDetails);
+  }
 
   function getCart() {
     let cart = localStorage.getItem("cart");
@@ -38,6 +60,8 @@ function Summary() {
   useEffect(() => {
     getShippingDetails();
     getCart();
+    getCardDetails();
+    getSwishDetails();
   }, []);
 
   useEffect(() => {
@@ -127,8 +151,16 @@ function Summary() {
           paddingBottom: "1rem",
         }}
       >
-        <h2 style={{ marginBottom: "0.5rem" }}>Pay with:</h2>
-        {shippingDetails.map((shippingDetail, index) => (
+        <h2 style={{ marginBottom: "0.5rem" }}>
+          {" "}
+          {cardDetails.length === 0 ||
+          cardDetails[0].cardNumber.length === 0 ? (
+            <h1>Pay with Swish</h1>
+          ) : (
+            <h1>Pay with Card</h1>
+          )}
+        </h2>
+        {/* {shippingDetails.map((shippingDetail, index) => (
           <div key={index} style={{ width: "100%" }}>
             <div>
               <label className='input-label'>First name:</label>
@@ -151,7 +183,7 @@ function Summary() {
               <label>{shippingDetail.houseNumber}</label>
             </div>
           </div>
-        ))}
+        ))} */}
         <Link to={"/payment"}>
           <button
             className='add-to-cart-btn'
@@ -162,18 +194,6 @@ function Summary() {
         </Link>
       </div>
     </div>
-
-    // <div>
-    //   {shippingDetails.map((shippingDetail, index) => (
-    //     <div key={index}>
-    //       <h1>{shippingDetail.firstName}</h1>
-    //       <h1>{shippingDetail.lastName}</h1>
-    //       <h1>{shippingDetail.city}</h1>
-    //       <h1>{shippingDetail.street}</h1>
-    //       <h1>{shippingDetail.houseNumber}</h1>
-    //     </div>
-    //   ))}
-    // </div>
   );
 }
 
