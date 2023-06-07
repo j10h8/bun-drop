@@ -11,21 +11,17 @@
 body {
   font-family: "Roboto", sans-serif;
   color: #ffa07a;
-  background: linear-gradient(
-    90deg,
-    rgb(0, 255, 255) 0%,
-    #4b7bff 50%,
-    rgb(0, 255, 255) 100%
-  );
+  background: linear-gradient(90deg,
+      rgb(0, 255, 255) 0%,
+      #4b7bff 50%,
+      rgb(0, 255, 255) 100%);
 }
 
 .gradient-background {
-  background: linear-gradient(
-    90deg,
-    rgb(0, 255, 255) 0%,
-    #4b7bff 50%,
-    rgb(0, 255, 255) 100%
-  );
+  background: linear-gradient(90deg,
+      rgb(0, 255, 255) 0%,
+      #4b7bff 50%,
+      rgb(0, 255, 255) 100%);
 }
 
 .logo {
@@ -41,11 +37,9 @@ body {
   justify-content: center;
   margin-top: 7rem;
   margin-bottom: 3rem;
-  background: linear-gradient(
-    315deg,
-    rgb(0, 255, 255) 0%,
-    rgb(106, 144, 250) 100%
-  );
+  background: linear-gradient(315deg,
+      rgb(0, 255, 255) 0%,
+      rgb(106, 144, 250) 100%);
   border-radius: 50%;
   width: 230px;
   height: 230px;
@@ -206,13 +200,19 @@ p {
   .grid-layout {
     grid-template-columns: 1fr;
   }
+
   .menu-image {
     width: 300px;
     height: 300px;
   }
+
   .menu-item-card {
     width: 50vw;
     min-width: 500px;
+  }
+
+  .logo-background {
+    margin-top: 2rem;
   }
 }
 
@@ -246,7 +246,9 @@ p {
   align-items: center;
   background: linear-gradient(135deg, rgb(0, 255, 255) 0%, #4b7bff 100%);
   width: 30%;
+  min-width: 500px;
   height: 30%;
+  min-height: 350px;
   position: fixed;
   top: 35%;
   left: 35%;

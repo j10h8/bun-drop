@@ -129,14 +129,14 @@ function Shipping() {
   }
 
   return (
-    <div className='center-items'>
+    <div className="center-items">
       <h1>Shipping details</h1>
       {shippingDetails.length === 0 ||
       shippingDetails[0].firstName.length === 0 ? (
         <h2 style={{ marginTop: "2rem", marginBottom: "1.5rem" }}></h2>
       ) : (
         <div
-          className='center-items menu-item-card'
+          className="center-items menu-item-card"
           style={{
             height: "auto",
             paddingTop: "0.5rem",
@@ -147,37 +147,37 @@ function Shipping() {
           {shippingDetails.map((shippingDetail, index) => (
             <div key={index} style={{ width: "100%" }}>
               <div>
-                <label className='input-label'>First name:</label>
+                <label className="input-label">First name:</label>
                 <label>{shippingDetail.firstName}</label>
               </div>
               <div>
-                <label className='input-label'>Last name:</label>
+                <label className="input-label">Last name:</label>
                 <label>{shippingDetail.lastName}</label>
               </div>
               <div>
-                <label className='input-label'>City:</label>
+                <label className="input-label">City:</label>
                 <label>{shippingDetail.city}</label>
               </div>
               <div>
-                <label className='input-label'>Street:</label>
+                <label className="input-label">Street:</label>
                 <label>{shippingDetail.street}</label>
               </div>
               <div>
-                <label className='input-label'>House number:</label>
+                <label className="input-label">House number:</label>
                 <label>{shippingDetail.houseNumber}</label>
               </div>
             </div>
           ))}
-          <Link to={"/payment"}>
+          <Link to={"/summary"}>
             <button
-              className='add-to-cart-btn'
+              className="add-to-cart-btn"
               style={{ width: "auto", fontSize: "1.3rem" }}
             >
               Go to payment
             </button>
           </Link>
           <button
-            className='add-to-cart-btn'
+            className="add-to-cart-btn"
             style={{ width: "auto", fontSize: "1.3rem" }}
             onClick={clearShippingDetails}
           >
@@ -186,7 +186,7 @@ function Shipping() {
         </div>
       )}
       <div
-        className='center-items menu-item-card'
+        className="center-items menu-item-card"
         style={{
           height: "auto",
           paddingTop: "0.5rem",
@@ -198,54 +198,54 @@ function Shipping() {
         </h2>
         <form onSubmit={handleSubmit} style={{ width: "100%" }}>
           <div style={{ width: "100%" }}>
-            <label className='input-label'>First name:</label>
+            <label className="input-label">First name:</label>
             <input
-              type='text'
+              type="text"
               value={firstName}
               onChange={handleFirstNameInput}
-              placeholder='First name'
+              placeholder="First name"
             />
           </div>
           <div>
-            <label className='input-label'>Last name:</label>
+            <label className="input-label">Last name:</label>
             <input
-              type='text'
+              type="text"
               value={lastName}
               onChange={handleLastNameInput}
-              placeholder='Last name'
+              placeholder="Last name"
             />
           </div>
           <div>
-            <label className='input-label'>City:</label>
+            <label className="input-label">City:</label>
             <input
-              type='text'
+              type="text"
               value={city}
               onChange={handleCityInput}
-              placeholder='City'
+              placeholder="City"
             />
           </div>
           <div>
-            <label className='input-label'>Street:</label>
+            <label className="input-label">Street:</label>
             <input
-              type='text'
+              type="text"
               value={street}
               onChange={handleStreetInput}
-              placeholder='Street'
+              placeholder="Street"
             />
           </div>
           <div>
-            <label className='input-label'>House number:</label>
+            <label className="input-label">House number:</label>
             <input
-              type='number'
+              type="number"
               value={houseNumber}
               onChange={handleHouseNumberInput}
-              placeholder='House number'
+              placeholder="House number"
             />
           </div>
-          <div className='center-items'>
+          <div className="center-items">
             <button
-              type='submit'
-              className='add-to-cart-btn'
+              type="submit"
+              className="add-to-cart-btn"
               style={{ width: "auto", fontSize: "1.3rem" }}
             >
               Save
@@ -254,21 +254,21 @@ function Shipping() {
         </form>
       </div>
 
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className='modal'>
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className="modal">
         <h2 style={{ marginBottom: "1.5rem" }}>
           Your shipping details have been saved!
         </h2>
 
         <button
           onClick={closeModal}
-          className='add-to-cart-btn'
+          className="add-to-cart-btn"
           style={{ width: "30%", fontSize: "1.3rem" }}
         >
           Close window
         </button>
         <Link to={"/payment"}>
           <button
-            className='add-to-cart-btn'
+            className="add-to-cart-btn"
             style={{ width: "100%", fontSize: "1.3rem" }}
           >
             Go to payment

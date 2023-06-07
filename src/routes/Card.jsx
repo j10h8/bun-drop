@@ -76,13 +76,13 @@ function Card() {
   }
 
   return (
-    <div className='center-items'>
+    <div className="center-items">
       <h1>Credit card payment</h1>
       {cardDetails.length === 0 || cardDetails[0].cardNumber.length === 0 ? (
         <h2 style={{ marginTop: "2rem", marginBottom: "1.5rem" }}></h2>
       ) : (
         <div
-          className='center-items menu-item-card'
+          className="center-items menu-item-card"
           style={{
             height: "auto",
             paddingTop: "0.5rem",
@@ -93,29 +93,29 @@ function Card() {
           {cardDetails.map((cardDetail, index) => (
             <div key={index} style={{ width: "100%" }}>
               <div>
-                <label className='input-label'>Card number:</label>
+                <label className="input-label">Card number:</label>
                 <label>{cardDetail.cardNumber}</label>
               </div>
               <div>
-                <label className='input-label'>CVV:</label>
+                <label className="input-label">CVV:</label>
                 <label>{cardDetail.cVV}</label>
               </div>
               <div>
-                <label className='input-label'>Date of expiry:</label>
+                <label className="input-label">Date of expiry:</label>
                 <label>{cardDetail.dateOfExpiry}</label>
               </div>
             </div>
           ))}
           <Link to={"/summary"}>
             <button
-              className='add-to-cart-btn'
+              className="add-to-cart-btn"
               style={{ width: "auto", fontSize: "1.3rem" }}
             >
               Go to summary
             </button>
           </Link>
           <button
-            className='add-to-cart-btn'
+            className="add-to-cart-btn"
             style={{ width: "auto", fontSize: "1.3rem" }}
             onClick={clearCardDetails}
           >
@@ -124,7 +124,7 @@ function Card() {
         </div>
       )}
       <div
-        className='center-items menu-item-card'
+        className="center-items menu-item-card"
         style={{
           height: "auto",
           paddingTop: "0.5rem",
@@ -134,36 +134,36 @@ function Card() {
         <h2 style={{ marginBottom: "0.5rem" }}>Specify/update card details</h2>
         <form onSubmit={handleSubmit} style={{ width: "100%" }}>
           <div style={{ width: "100%" }}>
-            <label className='input-label'>Card number:</label>
+            <label className="input-label">Card number:</label>
             <input
-              type='text'
+              type="text"
               value={cardNumber}
               onChange={handleCardNumberInput}
-              placeholder='Card number'
+              placeholder="Card number"
             />
           </div>
           <div>
-            <label className='input-label'>CVV:</label>
+            <label className="input-label">CVV:</label>
             <input
-              type='text'
+              type="text"
               value={cVV}
               onChange={handleCVVInput}
-              placeholder='CVV'
+              placeholder="CVV"
             />
           </div>
           <div>
-            <label className='input-label'>Date of expiry:</label>
+            <label className="input-label">Date of expiry:</label>
             <input
-              type='text'
+              type="text"
               value={dateOfExpiry}
               onChange={handleDateOfExpiryInput}
-              placeholder='Date of expiry'
+              placeholder="Date of expiry"
             />
           </div>
-          <div className='center-items'>
+          <div className="center-items">
             <button
-              type='submit'
-              className='add-to-cart-btn'
+              type="submit"
+              className="add-to-cart-btn"
               style={{ width: "auto", fontSize: "1.3rem" }}
             >
               Save
@@ -172,21 +172,21 @@ function Card() {
         </form>
       </div>
 
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className='modal'>
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className="modal">
         <h2 style={{ marginBottom: "1.5rem" }}>
           Your card details have been saved!
         </h2>
 
         <button
           onClick={closeModal}
-          className='add-to-cart-btn'
+          className="add-to-cart-btn"
           style={{ width: "30%", fontSize: "1.3rem" }}
         >
           Close window
         </button>
         <Link to={"/summary"}>
           <button
-            className='add-to-cart-btn'
+            className="add-to-cart-btn"
             style={{ width: "100%", fontSize: "1.3rem" }}
           >
             Go to summary

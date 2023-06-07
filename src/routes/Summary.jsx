@@ -69,10 +69,10 @@ function Summary() {
   }, [cart]);
 
   return (
-    <div className='center-items'>
+    <div className="center-items">
       <h1>Summary</h1>
       <div
-        className='center-items menu-item-card'
+        className="center-items menu-item-card"
         style={{
           height: "auto",
           paddingTop: "0.5rem",
@@ -83,26 +83,26 @@ function Summary() {
         {cart.map((cartItem, index) => (
           <div key={index} style={{ width: "100%" }}>
             <div>
-              <label className='input-label'>{cartItem.title}</label>
+              <label className="input-label">{cartItem.title}</label>
               <label>${cartItem.price}</label>
             </div>
           </div>
         ))}
         <div style={{ width: "100%" }}>
-          <label className='input-label'>Total</label>
+          <label className="input-label">Total</label>
           <label>${total}</label>
         </div>
         <Link to={"/menu"}>
           <button
-            className='add-to-cart-btn'
+            className="add-to-cart-btn"
             style={{ width: "auto", fontSize: "1.3rem" }}
           >
-            Back to Menu
+            Back to Cart
           </button>
         </Link>
       </div>
       <div
-        className='center-items menu-item-card'
+        className="center-items menu-item-card"
         style={{
           height: "auto",
           paddingTop: "0.5rem",
@@ -113,30 +113,30 @@ function Summary() {
         {shippingDetails.map((shippingDetail, index) => (
           <div key={index} style={{ width: "100%" }}>
             <div>
-              <label className='input-label'>First name:</label>
+              <label className="input-label">First name:</label>
               <label style={{ width: "50%" }}>{shippingDetail.firstName}</label>
             </div>
             <div>
-              <label className='input-label'>Last name:</label>
+              <label className="input-label">Last name:</label>
               <label>{shippingDetail.lastName}</label>
             </div>
             <div>
-              <label className='input-label'>City:</label>
+              <label className="input-label">City:</label>
               <label>{shippingDetail.city}</label>
             </div>
             <div>
-              <label className='input-label'>Street:</label>
+              <label className="input-label">Street:</label>
               <label>{shippingDetail.street}</label>
             </div>
             <div>
-              <label className='input-label'>House number:</label>
+              <label className="input-label">House number:</label>
               <label>{shippingDetail.houseNumber}</label>
             </div>
           </div>
         ))}
         <Link to={"/shipping"}>
           <button
-            className='add-to-cart-btn'
+            className="add-to-cart-btn"
             style={{ width: "auto", fontSize: "1.3rem" }}
           >
             Change shipping details
@@ -144,7 +144,7 @@ function Summary() {
         </Link>
       </div>
       <div
-        className='center-items menu-item-card'
+        className="center-items menu-item-card"
         style={{
           height: "auto",
           paddingTop: "0.5rem",
@@ -186,7 +186,7 @@ function Summary() {
         ))} */}
         <Link to={"/payment"}>
           <button
-            className='add-to-cart-btn'
+            className="add-to-cart-btn"
             style={{ width: "auto", fontSize: "1.3rem" }}
           >
             Change payment details

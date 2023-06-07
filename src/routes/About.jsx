@@ -2,18 +2,19 @@ import React from "react";
 
 function About() {
   return (
-    <div className='center-items'>
+    <div className="center-items">
       <div
-        className='center-items'
+        className="center-items"
         style={{
           width: "40%",
           minWidth: "300px",
           background: "rgba(255, 255, 255, 0.8)",
           borderRadius: "20px",
           boxShadow: "10px 10px 0px 5px rgba(0,255,255,1)",
+          marginBottom: "3rem",
         }}
       >
-        <h1 className='blue-heading'>About</h1>
+        <h1 className="blue-heading">About</h1>
         <div>
           <p>
             At Bun Drop, we're passionate about delivering an exceptional dining

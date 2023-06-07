@@ -11,22 +11,22 @@ import {
 import { Link } from "react-router-dom";
 
 function NavBar() {
-  const homeIcon = <FontAwesomeIcon icon={faHouse} className='nav-bar-icon' />;
+  const homeIcon = <FontAwesomeIcon icon={faHouse} className="nav-bar-icon" />;
   const menuIcon = (
-    <FontAwesomeIcon icon={faUtensils} className='nav-bar-icon' />
+    <FontAwesomeIcon icon={faUtensils} className="nav-bar-icon" />
   );
   const shoppingCartIcon = (
-    <FontAwesomeIcon icon={faCartShopping} className='nav-bar-icon' />
+    <FontAwesomeIcon icon={faCartShopping} className="nav-bar-icon" />
   );
   const infoIcon = (
-    <FontAwesomeIcon icon={faInfoCircle} className='nav-bar-icon' />
+    <FontAwesomeIcon icon={faInfoCircle} className="nav-bar-icon" />
   );
   const termsIcon = (
-    <FontAwesomeIcon icon={faFileContract} className='nav-bar-icon' />
+    <FontAwesomeIcon icon={faFileContract} className="nav-bar-icon" />
   );
   return (
     <div
-      className='gradient-background'
+      className="gradient-background"
       style={{
         display: "flex",
         alignItems: "center",
@@ -35,7 +35,7 @@ function NavBar() {
     >
       <div>
         <Link to={"/"}>
-          <img src={logo} alt='logo' className='logo-navbar' />
+          <img src={logo} alt="logo" className="logo-navbar" />
         </Link>
       </div>
       <div
@@ -46,11 +46,21 @@ function NavBar() {
           marginRight: "2rem",
         }}
       >
-        <Link to={"/"}>{homeIcon}</Link>
-        <Link to={"/menu"}>{menuIcon}</Link>
-        <Link to={"/about"}>{infoIcon}</Link>
-        <Link to={"/terms"}>{termsIcon}</Link>
-        <Link to={"/cart"}>{shoppingCartIcon}</Link>
+        <Link to={"/"} title="Home">
+          {homeIcon}
+        </Link>
+        <Link to={"/menu"} title="Menu">
+          {menuIcon}
+        </Link>
+        <Link to={"/about"} title="About">
+          {infoIcon}
+        </Link>
+        <Link to={"/terms"} title="Terms & Conditions">
+          {termsIcon}
+        </Link>
+        <Link to={"/cart"} title="Cart">
+          {shoppingCartIcon}
+        </Link>
       </div>
     </div>
   );
