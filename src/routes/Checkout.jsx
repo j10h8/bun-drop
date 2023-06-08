@@ -18,6 +18,7 @@ function Checkout() {
   const [city, setCity] = useState("");
   const [street, setStreet] = useState("");
   const [houseNumber, setHouseNumber] = useState("");
+  const [randomDeliveryTime, setRandomDeliveryTime] = useState(0);
   const navigate = useNavigate();
 
   const service = new appService();
@@ -89,6 +90,8 @@ function Checkout() {
   function handleCardSubmit(event) {
     event.preventDefault();
 
+    setRandomDeliveryTime(Math.floor(Math.random() * 40) + 20);
+
     if (
       service.checkInputEmpty(cardNumber) ||
       service.checkInputEmpty(cVV) ||
@@ -102,7 +105,6 @@ function Checkout() {
       alert("Please fill in all fields.");
       return;
     }
-    // Check if monthOfExpiry is in the future
 
     if (
       service.checkInputLength(firstName) ||
@@ -157,6 +159,8 @@ function Checkout() {
 
   function handleSwishSubmit(event) {
     event.preventDefault();
+
+    setRandomDeliveryTime(Math.floor(Math.random() * 40) + 20);
 
     if (
       service.checkInputEmpty(firstName) ||
@@ -490,14 +494,17 @@ function Checkout() {
         <div style={{ textAlign: "center" }}>
           <h2 style={{ marginBottom: "1.5rem" }}>Thank you!</h2>
           <h2 style={{ marginBottom: "1.5rem" }}>
-            Your order will be delivered within approximately 40 minutes.
+            Your order will be delivered within approximately
+          </h2>
+          <h2 style={{ marginBottom: "1.5rem" }}>
+            {randomDeliveryTime} minutes.
           </h2>
         </div>
         <Link to={"/"}>
           <button
             onClick={checkout}
             className='add-to-cart-btn'
-            style={{ width: "30%", fontSize: "1.3rem" }}
+            style={{ fontSize: "1.3rem" }}
           >
             Close window
           </button>
