@@ -11,9 +11,9 @@ class appService {
     }
   }
 
-  checkIfNumber(input) {
-    const numbers = /1234567890/; // \d in regular expressions matches any digit
-    if (numbers.test(input)) {
+  checkIfDigits(input) {
+    const digits = /[0-9]/;
+    if (digits.test(input)) {
       return true;
     }
   }
@@ -21,13 +21,6 @@ class appService {
   checkIfSpecialCharacter(input) {
     const specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
     if (specialCharacters.test(input)) {
-      return true;
-    }
-  }
-
-  checkIfOnlyDigits(input) {
-    const digits = /1234567890/;
-    if (digits.test(input)) {
       return true;
     }
   }

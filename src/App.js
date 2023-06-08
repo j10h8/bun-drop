@@ -6,13 +6,10 @@ import About from "./routes/About";
 import Terms from "./routes/Terms";
 import Menu from "./routes/Menu";
 import Cart from "./routes/Cart";
-import Shipping from "./routes/Shipping";
-import Summary from "./routes/Summary";
-import Card from "./routes/Card";
-import Swish from "./routes/Swish";
+import Checkout from "./routes/Checkout";
+
 import NotFound from "./routes/NotFound";
 import Modal from "react-modal";
-import Payment from "./routes/Payment";
 
 Modal.setAppElement("#root");
 
@@ -26,11 +23,7 @@ function App() {
         <Route path='/terms' element={<Terms />} />
         <Route path='/menu' element={<Menu />} />
         <Route path='/cart' element={<Cart />} />
-        <Route path='/shipping' element={<Shipping />} />
-        <Route path='/payment' element={<Payment />} />
-        <Route path='/summary' element={<Summary />} />
-        <Route path='/card' element={<Card />} />
-        <Route path='/swish' element={<Swish />} />
+        <Route path='/checkout' element={<Checkout />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>

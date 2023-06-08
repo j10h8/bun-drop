@@ -40,15 +40,15 @@ function Cart() {
   }
 
   return (
-    <div className="center-items">
+    <div className='center-items'>
       {cart.length === 0 ? (
-        <h1 className="cart-page-title">Your cart is empty</h1>
+        <h1 className='cart-page-title'>Your cart is empty</h1>
       ) : (
-        <h1 className="cart-page-title">Your cart</h1>
+        <h1 className='cart-page-title'>Your cart</h1>
       )}
-      <div className="cart-items-container">
+      <div className='cart-items-container'>
         {cart.map((cartItem, index) => (
-          <div key={index} className="cart-item-card">
+          <div key={index} className='cart-item-card'>
             <div>
               <h2>{cartItem.title}</h2>
               <h2>${cartItem.price}</h2>
@@ -62,7 +62,7 @@ function Cart() {
             >
               <button
                 onClick={() => removeFromCart(index)}
-                className="remove-from-cart-btn"
+                className='remove-from-cart-btn'
               >
                 Remove
               </button>
@@ -72,8 +72,8 @@ function Cart() {
         {cart.length > 0 && <h2 style={{ marginTop: "0.5rem" }}>${total}</h2>}
       </div>
       {cart.length > 0 && (
-        <Link to={"/shipping"}>
-          <button className="add-to-cart-btn" style={{ marginTop: "3rem" }}>
+        <Link to={"/checkout"}>
+          <button className='add-to-cart-btn' style={{ marginTop: "3rem" }}>
             Checkout
           </button>
         </Link>
@@ -81,7 +81,7 @@ function Cart() {
       {cart.length > 0 && (
         <Link to={"/menu"}>
           <button
-            className="add-to-cart-btn"
+            className='add-to-cart-btn'
             style={{ marginTop: "1rem", marginBottom: "2rem" }}
           >
             Menu
