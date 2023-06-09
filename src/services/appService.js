@@ -1,6 +1,6 @@
 class appService {
   checkInputLength(input) {
-    if (input.trim().length > 12) {
+    if (input.trim().length > 16) {
       return true;
     }
   }

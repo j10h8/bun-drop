@@ -7,28 +7,22 @@ function Menu() {
   const [fries, setFries] = useState([]);
   const [drinks, setDrinks] = useState([]);
 
-  async function getBurgersAsync() {
+  async function getMenuAsync() {
     await fetch("http://localhost:7000/burgers")
       .then((response) => response.json())
       .then((jsonObject) => setBurgers(jsonObject));
-  }
 
-  async function getFriesAsync() {
     await fetch("http://localhost:7000/fries")
       .then((response) => response.json())
       .then((jsonObject) => setFries(jsonObject));
-  }
 
-  async function getDrinksAsync() {
     await fetch("http://localhost:7000/drinks")
       .then((response) => response.json())
       .then((jsonObject) => setDrinks(jsonObject));
   }
 
   useEffect(() => {
-    getBurgersAsync();
-    getFriesAsync();
-    getDrinksAsync();
+    getMenuAsync();
   }, []);
 
   return (

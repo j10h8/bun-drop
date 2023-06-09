@@ -13,6 +13,7 @@ function Checkout() {
   const [monthOfExpiry, setMonthOfExpiry] = useState("");
   const [telephoneNumber, setTelephoneNumber] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [alertModalIsOpen, setAlertModalIsOpen] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [city, setCity] = useState("");
@@ -20,8 +21,16 @@ function Checkout() {
   const [houseNumber, setHouseNumber] = useState("");
   const [randomDeliveryTime, setRandomDeliveryTime] = useState(0);
   const navigate = useNavigate();
-
+  const [alertMessage, setAlertMessage] = useState("");
   const service = new appService();
+
+  useEffect(() => {
+    getCart();
+  }, []);
+
+  useEffect(() => {
+    getTotal();
+  }, [cart]);
 
   function getCart() {
     let cart = localStorage.getItem("cart");
@@ -33,6 +42,11 @@ function Checkout() {
     setCart(cart);
   }
 
+  function clearCart() {
+    localStorage.removeItem("cart");
+    setCart([]);
+  }
+
   function getTotal() {
     let total = 0;
     cart.forEach((cartItem) => {
@@ -42,31 +56,27 @@ function Checkout() {
     setTotal(total.toFixed(2));
   }
 
-  function handleCardNumberInput(event) {
-    setCardNumber(event.target.value);
+  // Confirmation modal functions
+  function openModal() {
+    setModalIsOpen(true);
   }
 
-  function handleCVVInput(event) {
-    setCVV(event.target.value);
+  function closeModal() {
+    setModalIsOpen(false);
+    clearCart();
+    navigate("/");
   }
 
-  function handleMonthOfExpiryInput(event) {
-    const monthOfExpiryInput = new Date(event.target.value);
-    const nextMonth = new Date();
-    nextMonth.setMonth(nextMonth.getMonth() - 1);
-
-    if (monthOfExpiryInput < nextMonth) {
-      alert("The provided card has expired.");
-      return;
-    }
-
-    setMonthOfExpiry(event.target.value);
+  // Alert modal functions
+  function openAlertModal() {
+    setAlertModalIsOpen(true);
   }
 
-  function handleTelephoneNumberInput(event) {
-    setTelephoneNumber(event.target.value);
+  function closeAlertModal() {
+    setAlertModalIsOpen(false);
   }
 
+  // Handle shipping details input
   function handleFirstNameInput(event) {
     setFirstName(event.target.value);
   }
@@ -87,6 +97,35 @@ function Checkout() {
     setHouseNumber(event.target.value);
   }
 
+  // Handle card input
+  function handleCardNumberInput(event) {
+    setCardNumber(event.target.value);
+  }
+
+  function handleCVVInput(event) {
+    setCVV(event.target.value);
+  }
+
+  function handleMonthOfExpiryInput(event) {
+    const monthOfExpiryInput = new Date(event.target.value);
+    const nextMonth = new Date();
+    nextMonth.setMonth(nextMonth.getMonth() - 1);
+
+    if (monthOfExpiryInput < nextMonth) {
+      setAlertMessage("The provided card has expired.");
+      openAlertModal();
+      return;
+    }
+
+    setMonthOfExpiry(event.target.value);
+  }
+
+  // Handle swish input
+  function handleTelephoneNumberInput(event) {
+    setTelephoneNumber(event.target.value);
+  }
+
+  // Handle card submit
   function handleCardSubmit(event) {
     event.preventDefault();
 
@@ -102,7 +141,8 @@ function Checkout() {
       service.checkInputEmpty(street) ||
       service.checkInputEmpty(houseNumber)
     ) {
-      alert("Please fill in all fields.");
+      setAlertMessage("Please fill in all fields.");
+      openAlertModal();
       return;
     }
 
@@ -113,7 +153,10 @@ function Checkout() {
       service.checkInputLength(street) ||
       service.checkInputLength(houseNumber)
     ) {
-      alert("Please provide inputs with a maximum of 12 characters.");
+      setAlertMessage(
+        "Please provide inputs with a maximum of 16 characters in the fields: First name, Last name, City, Street and House number."
+      );
+      openAlertModal();
       return;
     }
 
@@ -122,9 +165,10 @@ function Checkout() {
       service.checkIfDigits(lastName) ||
       service.checkIfDigits(city)
     ) {
-      alert(
-        'Digits are only allowed in the "House number" and "Street" field.'
+      setAlertMessage(
+        'Digits are not allowed in the "First name", "Last name" and "City" fields.'
       );
+      openAlertModal();
       return;
     }
 
@@ -135,28 +179,33 @@ function Checkout() {
       service.checkIfSpecialCharacter(street) ||
       service.checkIfSpecialCharacter(houseNumber)
     ) {
-      alert("Special characters are not allowed.");
+      setAlertMessage("Special characters are not allowed.");
+      openAlertModal();
       return;
     }
 
     if (cardNumber.length !== 16) {
-      alert("Please provide card number with 16 digits.");
+      setAlertMessage("Please provide card number with 16 digits.");
+      openAlertModal();
       return;
     }
 
     if (cVV.length !== 3) {
-      alert("Please provide CVV number with 3 digits.");
+      setAlertMessage("Please provide CVV with 3 digits.");
+      openAlertModal();
       return;
     }
 
     if (cardNumber.includes("e") || cVV.includes("e")) {
-      alert("Please provide only digits.");
+      setAlertMessage("Please provide only digits in card number.");
+      openAlertModal();
       return;
     }
 
     openModal();
   }
 
+  // Handle swish submit
   function handleSwishSubmit(event) {
     event.preventDefault();
 
@@ -170,43 +219,18 @@ function Checkout() {
       service.checkInputEmpty(houseNumber) ||
       service.checkInputEmpty(telephoneNumber)
     ) {
-      alert("Please fill in all fields.");
+      setAlertMessage("Please fill in all required fields.");
+      openAlertModal();
       return;
     }
 
     if (telephoneNumber.length < 8 || telephoneNumber.length > 14) {
-      alert("Please provide a telephone number with 8-14 digits.");
+      setAlertMessage("Please provide a telephone number with 8-14 digits.");
+      openAlertModal();
       return;
     }
 
     openModal();
-  }
-
-  function openModal() {
-    setModalIsOpen(true);
-  }
-
-  function closeModal() {
-    setModalIsOpen(false);
-    clearCart();
-    navigate("/");
-  }
-
-  useEffect(() => {
-    getCart();
-  }, []);
-
-  useEffect(() => {
-    getTotal();
-  }, [cart]);
-
-  function checkout() {
-    clearCart();
-  }
-
-  function clearCart() {
-    localStorage.removeItem("cart");
-    setCart([]);
   }
 
   return (
@@ -306,6 +330,14 @@ function Checkout() {
                 <label className='input-label'>House number:</label>
                 <input
                   type='number'
+                  onKeyDown={(e) =>
+                    (e.key === "e" ||
+                      e.key === "E" ||
+                      e.key === "." ||
+                      e.key === "," ||
+                      e.key === "-") &&
+                    e.preventDefault()
+                  }
                   value={houseNumber}
                   onChange={handleHouseNumberInput}
                   placeholder='House number'
@@ -351,6 +383,14 @@ function Checkout() {
                         >
                           <input
                             type='number'
+                            onKeyDown={(e) =>
+                              (e.key === "e" ||
+                                e.key === "E" ||
+                                e.key === "." ||
+                                e.key === "," ||
+                                e.key === "-") &&
+                              e.preventDefault()
+                            }
                             value={cardNumber}
                             onChange={handleCardNumberInput}
                             placeholder='Card number'
@@ -377,6 +417,14 @@ function Checkout() {
                         >
                           <input
                             type='number'
+                            onKeyDown={(e) =>
+                              (e.key === "e" ||
+                                e.key === "E" ||
+                                e.key === "." ||
+                                e.key === "," ||
+                                e.key === "-") &&
+                              e.preventDefault()
+                            }
                             value={cVV}
                             onChange={handleCVVInput}
                             placeholder='CVV'
@@ -465,6 +513,14 @@ function Checkout() {
                         >
                           <input
                             type='number'
+                            onKeyDown={(e) =>
+                              (e.key === "e" ||
+                                e.key === "E" ||
+                                e.key === "." ||
+                                e.key === "," ||
+                                e.key === "-") &&
+                              e.preventDefault()
+                            }
                             value={telephoneNumber}
                             onChange={handleTelephoneNumberInput}
                             placeholder='Telephone number'
@@ -502,13 +558,30 @@ function Checkout() {
         </div>
         <Link to={"/"}>
           <button
-            onClick={checkout}
+            onClick={clearCart}
             className='add-to-cart-btn'
             style={{ fontSize: "1.3rem" }}
           >
             Close window
           </button>
         </Link>
+      </Modal>
+
+      <Modal
+        isOpen={alertModalIsOpen}
+        onRequestClose={closeAlertModal}
+        className='modal'
+      >
+        <div style={{ textAlign: "center" }}>
+          <h2 style={{ marginBottom: "1.5rem" }}>{alertMessage}</h2>
+        </div>
+        <button
+          onClick={closeAlertModal}
+          className='add-to-cart-btn'
+          style={{ fontSize: "1.3rem" }}
+        >
+          Close window
+        </button>
       </Modal>
     </div>
   );

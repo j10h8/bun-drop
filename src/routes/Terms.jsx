@@ -2,19 +2,9 @@ import React from "react";
 
 function Terms() {
   return (
-    <div className="center-items">
-      <div
-        className="center-items"
-        style={{
-          width: "40%",
-          minWidth: "300px",
-          background: "rgba(255, 255, 255, 0.8)",
-          borderRadius: "20px",
-          boxShadow: "10px 10px 0px 5px rgba(0,255,255,1)",
-          marginBottom: "3rem",
-        }}
-      >
-        <h1 className="blue-heading">Terms & Conditions</h1>
+    <div className='center-items'>
+      <div className='center-items info-container'>
+        <h1 className='blue-heading'>Terms & Conditions</h1>
         <div>
           <p>
             These Terms and Conditions govern your use of the Bun Drop website
